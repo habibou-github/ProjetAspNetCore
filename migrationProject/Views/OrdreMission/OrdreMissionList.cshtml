@@ -1,0 +1,129 @@
+﻿@model IEnumerable<migrationProject.Models.OrdreMission>
+
+@{
+    ViewData["Title"] = "OrdreMissionList";
+    Layout = "~/Views/Shared/dash.cshtml";
+    
+}
+
+<h1>OrdreMissionList</h1>
+
+<p>
+    <a asp-action="OrdreMissionInfo">Create New</a>
+</p>
+<br />
+<table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.etat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name_respo_mission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateDepart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateArrivee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.heureDepart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.heureArrivee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.echlon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.matricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.objetDepart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.moyenTransport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreCheuvaux)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.montant_total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_trajet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.etat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name_respo_mission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateDepart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateArrivee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.heureDepart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.heureArrivee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.echlon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.matricule)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.grade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.objetDepart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.moyenTransport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreCheuvaux)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.montant_total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_trajet)
+                </td>
+                <td>
+                    <a asp-action="Document" asp-route-id="@item.idOrdremission">Document</a> |
+                    <a asp-action="Edit" asp-route-id="@item.idOrdremission">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.idOrdremission" onclick="return confirm('Are you sure you wish to delete this Mission Ordre numero : '+ @item.numero + '?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

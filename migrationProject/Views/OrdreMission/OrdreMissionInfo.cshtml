@@ -1,0 +1,122 @@
+﻿@model migrationProject.Models.OrdreMission
+
+@{
+    ViewBag.Title = "OrdreMissionInfo";
+    Layout = "~/Views/Shared/dash.cshtml";
+}
+
+<h1>OrdreMissionInfo</h1>
+
+<h4>OrdreMission</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SaveOrdreMission">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="numero" class="control-label"></label>
+                <input asp-for="numero" class="form-control" />
+                <span asp-validation-for="numero" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="etat" /> @Html.DisplayNameFor(model => model.etat)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="name_respo_mission" class="control-label"></label>
+                <input asp-for="name_respo_mission" class="form-control" />
+                <span asp-validation-for="name_respo_mission" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateDepart" class="control-label"></label>
+                <input asp-for="dateDepart" class="form-control" />
+                <span asp-validation-for="dateDepart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dateArrivee" class="control-label"></label>
+                <input asp-for="dateArrivee" class="form-control" />
+                <span asp-validation-for="dateArrivee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="heureDepart" class="control-label"></label>
+                <input asp-for="heureDepart" class="form-control" />
+                <span asp-validation-for="heureDepart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="heureArrivee" class="control-label"></label>
+                <input asp-for="heureArrivee" class="form-control" />
+                <span asp-validation-for="heureArrivee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="matricule" class="control-label"></label>
+                <input asp-for="matricule" class="form-control" />
+                <span asp-validation-for="matricule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="grade" class="control-label"></label>
+                <input asp-for="grade" class="form-control" />
+                <span asp-validation-for="grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="objetDepart" class="control-label"></label>
+                <input asp-for="objetDepart" class="form-control" />
+                <span asp-validation-for="objetDepart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="moyenTransport" class="control-label"></label>
+                <input asp-for="moyenTransport" class="form-control" />
+                <span asp-validation-for="moyenTransport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nombreCheuvaux" class="control-label"></label>
+                <input asp-for="nombreCheuvaux" class="form-control" />
+                <span asp-validation-for="nombreCheuvaux" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="montant_total" class="control-label"></label>
+                <input asp-for="montant_total" class="form-control" />
+                <span asp-validation-for="montant_total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2"> Personne </label>
+                <select name="IdPers" id="NomPersonel" class="form-control"
+                        style="width: 80.7%; height:36px; position:relative; left:15px;">
+                    <option selected>Select le personnel</option>
+                    @foreach (var item in ViewBag.P)
+                    {
+                        <option value="@item.IdPers" selected="@item.IdPers == 0 ? false : true"> @item.Nom @item.Prenom </option>
+                    }
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2"> Trajet </label>
+
+                <select name="id_trajet" id="id_trajet" class="form-control"
+                        style="width: 80.7%; height:36px; position:relative; left:15px;">
+                    <option>Select le trajet</option>
+                    @foreach (var item in ViewBag.T)
+                    {
+                        <option value="@item.id_trajet" selected="@item.id_trajet == 0 ? false : true"> De @item.villeDepart vers @item.villeArrivee </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input asp-for="idOrdremission" class="form-control" type="hidden"/>
+                <span asp-validation-for="idOrdremission" class="text-danger"></span>
+            </div>
+            <input asp-for="idOrdremission" class="form-control" type="hidden" disabled />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="OrdreMissionList">Back to List</a>
+</div>
+
