@@ -10,7 +10,6 @@
 
 using System;
 using System.Reflection;
-using Microsoft.AspNetCore.Identity.UI;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("migrationProject")]

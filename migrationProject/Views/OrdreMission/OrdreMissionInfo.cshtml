@@ -18,11 +18,6 @@
                 <input asp-for="numero" class="form-control" />
                 <span asp-validation-for="numero" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="etat" /> @Html.DisplayNameFor(model => model.etat)
-                </label>
-            </div>
             <div class="form-group">
                 <label asp-for="name_respo_mission" class="control-label"></label>
                 <input asp-for="name_respo_mission" class="form-control" />
@@ -30,22 +25,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="dateDepart" class="control-label"></label>
-                <input asp-for="dateDepart" class="form-control" />
+                <input asp-for="dateDepart" class="form-control" type="date"/>
                 <span asp-validation-for="dateDepart" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="dateArrivee" class="control-label"></label>
-                <input asp-for="dateArrivee" class="form-control" />
+                <input asp-for="dateArrivee" class="form-control" type="date"/>
                 <span asp-validation-for="dateArrivee" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="heureDepart" class="control-label"></label>
-                <input asp-for="heureDepart" class="form-control" />
+                <input asp-for="heureDepart" class="form-control" type="time"/>
                 <span asp-validation-for="heureDepart" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="heureArrivee" class="control-label"></label>
-                <input asp-for="heureArrivee" class="form-control" />
+                <input asp-for="heureArrivee" class="form-control" type="time"/>
                 <span asp-validation-for="heureArrivee" class="text-danger"></span>
             </div>
             <div class="form-group">

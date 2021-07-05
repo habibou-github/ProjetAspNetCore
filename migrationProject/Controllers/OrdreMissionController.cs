@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using migrationProject.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,9 @@ namespace migrationProject.Controllers
 
         public IActionResult OrdreMissionList()
         {
-            var ordreMissions = _context.ordremission.ToList();
 
+            var ordreMissions = _context.ordremission.ToList();
+            ViewBag.P = _context.personnels.ToList();
             return View(ordreMissions);
         }
 
@@ -75,6 +77,94 @@ namespace migrationProject.Controllers
 
             _context.SaveChanges();
             return RedirectToAction("OrdreMissionList");
+        }
+
+        public ActionResult EtatIndemnite()
+        {
+            string personnel = (string)Request.Form["IdPers"];
+            string mois = Request.Form["mois"];
+            string annee = Request.Form["annee"];
+
+            HttpContext.Session.SetString("personnel", personnel);
+            HttpContext.Session.SetString("mois", mois);
+            HttpContext.Session.SetString("annee", annee);
+
+            //Session["personnel"] = personnel;
+            //Session[""] = ;
+            //Session[""] = ;
+            //ViewData["mois"] = mois;
+            //ViewData["annee"] = annee;
+
+            //Session["mois"] = mois;
+            //Session["annee"] = annee;
+
+
+
+            return Redirect(Url.Action("PrintEtatIndKilo", "EtatIndKilo"));
+        }
+
+        public IActionResult EtatIndDep()
+        {
+            string personnel = Request.Form["IdPers"];
+            string mois = Request.Form["mois"];
+            string annee = Request.Form["annee"];
+
+            HttpContext.Session.SetString("personnel", personnel);
+            HttpContext.Session.SetString("mois", mois);
+            HttpContext.Session.SetString("annee", annee);
+
+            //Session["personnel"] = personnel;
+            //Session["mois"] = mois;
+            //Session["annee"] = annee;
+            return Redirect(Url.Action("PrintEtatIndDep", "EtatIndDep"));
+        }
+
+        public ActionResult PaimentDeplacement()
+        {
+            string personnel = Request.Form["IdPers"];
+            string mois = Request.Form["mois"];
+            string annee = Request.Form["annee"];
+
+            string ov = Request.Form["ov"];
+            string bp = Request.Form["bp"];
+
+            HttpContext.Session.SetString("personnel", personnel);
+            HttpContext.Session.SetString("mois", mois);
+            HttpContext.Session.SetString("annee", annee);
+            HttpContext.Session.SetString("ov", ov);
+            HttpContext.Session.SetString("bp", bp);
+
+            //Session["personnel"] = personnel;
+            //Session["mois"] = mois;
+            //Session["annee"] = annee;
+
+            //Session["ov"] = ov;
+            //Session["annee"] = annee;
+            return Redirect(Url.Action("PrintOrdrePaiment", "OrdrePaiment"));
+        }
+
+        public ActionResult PaimentKilometrique()
+        {
+            string personnel = Request.Form["IdPers"];
+            string mois = Request.Form["mois"];
+            string annee = Request.Form["annee"];
+
+            string ov = Request.Form["ov"];
+            string bp = Request.Form["bp"];
+
+            HttpContext.Session.SetString("personnel", personnel);
+            HttpContext.Session.SetString("mois", mois);
+            HttpContext.Session.SetString("annee", annee);
+            HttpContext.Session.SetString("ov", ov);
+            HttpContext.Session.SetString("bp", bp);
+
+            //Session["personnel"] = personnel;
+            //Session["mois"] = mois;
+            //Session["annee"] = annee;
+
+            //Session["ov"] = ov;
+            //Session["annee"] = annee;
+            return Redirect(Url.Action("PrintOrdrePaimentKilo", "OrdrePaimentKilo"));
         }
 
 

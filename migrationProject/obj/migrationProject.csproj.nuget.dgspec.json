@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\toshiba\\source\\repos\\migrationProject\\migrationProject\\migrationProject.csproj": {}
+    "C:\\Users\\amesk\\Music\\AspNetCore\\ProjetAspNetCore\\migrationProject\\migrationProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\toshiba\\source\\repos\\migrationProject\\migrationProject\\migrationProject.csproj": {
+    "C:\\Users\\amesk\\Music\\AspNetCore\\ProjetAspNetCore\\migrationProject\\migrationProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\toshiba\\source\\repos\\migrationProject\\migrationProject\\migrationProject.csproj",
+        "projectUniqueName": "C:\\Users\\amesk\\Music\\AspNetCore\\ProjetAspNetCore\\migrationProject\\migrationProject.csproj",
         "projectName": "migrationProject",
-        "projectPath": "C:\\Users\\toshiba\\source\\repos\\migrationProject\\migrationProject\\migrationProject.csproj",
-        "packagesPath": "C:\\Users\\toshiba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\toshiba\\source\\repos\\migrationProject\\migrationProject\\obj\\",
+        "projectPath": "C:\\Users\\amesk\\Music\\AspNetCore\\ProjetAspNetCore\\migrationProject\\migrationProject.csproj",
+        "packagesPath": "C:\\Users\\amesk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amesk\\Music\\AspNetCore\\ProjetAspNetCore\\migrationProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\toshiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amesk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[5.0.7, )"
             },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.3, )"
@@ -67,6 +71,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Rotativa": {
+              "target": "Package",
+              "version": "[1.7.3, )"
+            },
+            "Rotativa.AspNetCore": {
+              "target": "Package",
+              "version": "[1.1.1, )"
             }
           },
           "imports": [
@@ -87,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

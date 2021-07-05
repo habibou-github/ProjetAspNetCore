@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "OrdreMissionList";
     Layout = "~/Views/Shared/dash.cshtml";
-    
+
 }
 
 <h1>OrdreMissionList</h1>
@@ -33,36 +33,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.heureDepart)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.heureArrivee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.echlon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.matricule)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.grade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.objetDepart)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.moyenTransport)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nombreCheuvaux)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.montant_total)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.id_trajet)
-            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.heureArrivee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.echlon)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.matricule)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.grade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.objetDepart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.moyenTransport)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombreCheuvaux)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montant_total)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdPers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_trajet)
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -91,7 +91,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.heureArrivee)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.echlon)
                 </td>
                 <td>
@@ -117,7 +117,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.id_trajet)
-                </td>
+                </td>*@
                 <td>
                     <a asp-action="Document" asp-route-id="@item.idOrdremission">Document</a> |
                     <a asp-action="Edit" asp-route-id="@item.idOrdremission">Edit</a> |
@@ -126,4 +126,431 @@
             </tr>
         }
     </tbody>
+
 </table>
+
+<table style="margin-top:50px;">
+    <tr>
+        <td>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalee">
+                Paiment de Déplacement
+            </button>
+        </td>
+
+        <td>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModaleee">
+                Paiment Kilométriques
+            </button>
+        </td>
+
+
+        <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Indemnités Kilométriques
+            </button>
+        </td>
+
+        <td>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModale">
+                Indémnité de déplacement
+            </button>
+        </td>
+    </tr>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Détails</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height:300px;">
+                <form method="post" action="OrdreMission/EtatIndemnite">
+                    <div class="container">
+
+                        <div class="col-sm-12" style="height:70px; ">
+                            <label for="personnel" class="col-form-label">Personnel</label>
+                            <select name="IdPers" id="NomPersonel" class="form-control"
+                                    style="width: 30%; height:36px;">
+                                <option>Select le personnel</option>
+                                @foreach (var item in ViewBag.P)
+                                {
+                                    <option value="@item.IdPers"> @item.Nom @item.Prenom </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Mois</label>
+                                <input class="form-control" id="mois" name="mois" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Année</label>
+                                <input class="form-control" id="annee" name="annee" />
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    @*<div class="form-group">
+                            <label for="message-text" class="col-form-label">Année</label>
+                            <input class="form-control" id="annee" />
+                        </div>*@
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="submit" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModale" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Détails</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <form  asp-action="EtatIndDep">
+                    <div class="container">
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <label for="personnel" class="col-form-label">Personnel</label>
+                            <select name="IdPers" id="NomPersonel" class="form-control"
+                                    style="width: 30%; height:36px;">
+                                <option>Select le personnel</option>
+                                @foreach (var item in ViewBag.P)
+                                {
+                                    <option value="@item.IdPers"> @item.Nom @item.Prenom </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Mois</label>
+                                <input class="form-control" id="mois" name="mois" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Année</label>
+                                <input class="form-control" id="annee" name="annee" />
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    @*<div class="form-group">
+                            <label for="message-text" class="col-form-label">Année</label>
+                            <input class="form-control" id="annee" />
+                        </div>*@
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="submit" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Détails</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 500px; padding-top:70px;">
+                <form method="post" action="PaimentDeplacement">
+                    <div class="container">
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <label for="personnel" class="col-form-label">Personnel</label>
+                            <select name="IdPers" id="NomPersonel" class="form-control"
+                                    style="width: 30%; height:36px;">
+                                <option>Select le personnel</option>
+                                @foreach (var item in ViewBag.P)
+                                {
+                                    <option value="@item.IdPers"> @item.Nom @item.Prenom </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Mois</label>
+                                <input class="form-control" id="mois" name="mois" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Année</label>
+                                <input class="form-control" id="annee" name="annee" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="ov" class="col-form-label">OV n°</label>
+                                <input class="form-control" id="ov" name="ov" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="bp" class="col-form-label">BP</label>
+                                <input class="form-control" id="bp" name="bp" />
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    @*<div class="form-group">
+                            <label for="message-text" class="col-form-label">Année</label>
+                            <input class="form-control" id="annee" />
+                        </div>*@
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="submit" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModaleee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Détails</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 500px; padding-top:70px;">
+                <form method="post" action="PaimentKilometrique">
+                    <div class="container">
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <label for="personnel" class="col-form-label">Personnel</label>
+                            <select name="IdPers" id="NomPersonel" class="form-control"
+                                    style="width: 30%; height:36px;">
+                                <option>Select le personnel</option>
+                                @foreach (var item in ViewBag.P)
+                                {
+                                    <option value="@item.IdPers"> @item.Nom @item.Prenom </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Mois</label>
+                                <input class="form-control" id="mois" name="mois" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="annee" class="col-form-label">Année</label>
+                                <input class="form-control" id="annee" name="annee" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="ov" class="col-form-label">OV n°</label>
+                                <input class="form-control" id="ov" name="ov" />
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="height:70px;">
+                            <div class="form-group">
+                                @*<div class='input-group date' id='datetimepicker10'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar">
+                                            </span>
+                                        </span>
+                                    </div>*@
+                                <label for="bp" class="col-form-label">BP</label>
+                                <input class="form-control" id="bp" name="bp" />
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    @*<div class="form-group">
+                            <label for="message-text" class="col-form-label">Année</label>
+                            <input class="form-control" id="annee" />
+                        </div>*@
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="submit" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</table>
+
+<script type="text/javascript">
+
+    $('[name=mois]').datetimepicker({
+        timepicker: false,
+        datepicker: true,
+        format: 'm',
+        sideBySide: true,
+        value: '01'
+    });
+
+    $('[name=annee]').datetimepicker({
+        timepicker: false,
+        datepicker: true,
+        viewMode: 'years',
+        format: 'Y',
+        changeMonth: true,
+        changeYear: true,
+        value: '2008'
+    });
+
+</script>

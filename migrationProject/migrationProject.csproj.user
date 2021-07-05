@@ -11,5 +11,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>migrationProject.Models.DbContextIndimnite</WebStackScaffolding_DbContextTypeFullName>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
 </Project>
